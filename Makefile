@@ -12,6 +12,9 @@ img_tag_frontend = frontend:latest
 img_tag_backend = backend:latest
 compute_pool_name = pool
 warehouse_name = wh
+svc_schema_name = svc
+svc_name_frontend = ${repository_db_name}.${svc_schema_name}.frontend
+svc_name_backend = ${repository_db_name}.${svc_schema_name}.backend
 
 repo-login:
 	snow spcs image-registry token \
@@ -24,6 +27,7 @@ repo-login:
 create-objects:
 	snow sql -q "CREATE DATABASE IF NOT EXISTS ${repository_db_name}"
 	snow sql -q "CREATE SCHEMA IF NOT EXISTS ${repository_db_name}.${repository_schema_name}"
+	snow sql -q "CREATE SCHEMA IF NOT EXISTS ${repository_db_name}.${svc_schema_name}"
 	snow sql -q "CREATE IMAGE REPOSITORY IF NOT EXISTS ${repository_db_name}.${repository_schema_name}.${repository_name}"
 
 create-compute:
@@ -59,3 +63,11 @@ teardown-compute:
 	snow sql -q "DROP COMPUTE POOL IF EXISTS ${compute_pool_name}"
 	snow sql -q "DROP WAREHOUSE IF EXISTS ${warehouse_name}"
 
+deploy-frontend:
+	snow spcs service create ${svc_name_frontend} --compute-pool ${compute_pool_name} --spec-path ./svc/frontend.yml
+
+endpoints-frontend:
+	snow spcs service list-endpoints ${svc_name_frontend}
+
+deploy-backend:
+	snow spcs service create ${svc_name_backend} --compute-pool ${compute_pool_name} --spec-path ./svc/backend.yml

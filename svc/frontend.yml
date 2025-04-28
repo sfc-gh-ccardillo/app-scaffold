@@ -1,0 +1,12 @@
+spec:
+  containers:
+    - name: nginx
+      image: /dev/devops/img/nginx:latest
+    - name: frontend
+      image: /dev/devops/img/frontend:latest
+  endpoints:
+    - name: nginx
+      port: 8000
+      public: true
+    - name: frontend
+      port: 8080

@@ -1,0 +1,7 @@
+spec:
+  containers:
+    - name: backend
+      image: /dev/devops/img/backend:latest
+  endpoints:
+    - name: backend
+      port: 8081
