@@ -66,8 +66,20 @@ teardown-compute:
 deploy-frontend:
 	snow spcs service create ${svc_name_frontend} --compute-pool ${compute_pool_name} --spec-path ./svc/frontend.yml
 
+upgrade-frontend:
+	snow spcs service upgrade ${svc_name_frontend} --spec-path ./svc/frontend.yml
+
 endpoints-frontend:
 	snow spcs service list-endpoints ${svc_name_frontend}
 
 deploy-backend:
 	snow spcs service create ${svc_name_backend} --compute-pool ${compute_pool_name} --spec-path ./svc/backend.yml
+	
+upgrade-backend:
+	snow spcs service upgrade ${svc_name_backend} --spec-path ./svc/backend.yml
+
+teardown-frontend:
+	snow spcs service drop ${svc_name_frontend}
+
+teardown-backend:
+	snow spcs service drop ${svc_name_backend}
