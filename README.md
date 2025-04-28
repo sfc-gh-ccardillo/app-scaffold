@@ -75,6 +75,10 @@ To have the frontend call the backend, you can use one of two routes:
 - `/hello` - This [provides a "hello" message](https://github.com/sfc-gh-ccardillo/app-scaffold/blob/f76373c80458c494cbe062dea889b2743e30d55c/img/backend/app.py#L21) from the backend container.
 - `/query` - This [provides the result](https://github.com/sfc-gh-ccardillo/app-scaffold/blob/f76373c80458c494cbe062dea889b2743e30d55c/img/backend/app.py#L25-L26) of a `SELECT CURRENT_USER() query` executed by the backend container. (The backend container [uses this code](https://github.com/sfc-gh-ccardillo/app-scaffold/blob/f76373c80458c494cbe062dea889b2743e30d55c/img/backend/app.py#L6-L15) to establish a connection with the underlying Snowflake account)
 
+## Upgrading Services
+
+If you make changes to an image or your images, you can build (`make build-all`), push (`make push-all`), and finally upgrade (`make upgrade-all`) to reflect the changes. Note that you don't have to upgrade the image tag (currently set to `latest`) to have the changes reflected.
+
 ## Teardown
 **`make teardown-services`**
 **`make teardown-compute`**
