@@ -1,0 +1,18 @@
+definition_version: 2
+entities:
+  pkg:
+    type: application package
+    identifier: <% fn.concat_ids('app_scaffold_pkg', ctx.env.suffix) %>
+    manifest: app/manifest.yml
+    artifacts:
+      - src: app/*
+        dest: ./
+      - src: src/streamlit/*
+        dest: streamlit/
+  app:
+    type: application
+    from:
+      target: pkg
+    identifier: <% fn.concat_ids('app_scaffold', ctx.env.suffix) %>
+env:
+  suffix: <% fn.concat_ids('_', fn.sanitize_id(fn.get_username('unknown_user')) | lower) %>

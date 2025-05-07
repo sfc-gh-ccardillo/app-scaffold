@@ -110,6 +110,16 @@ upgrade-all: upgrade-frontend upgrade-backend
 endpoints-frontend:
 	snow spcs service list-endpoints ${svc_name_frontend}
 
+##################
+# App Development#
+##################
+
+app-dev-run:
+	snow app run
+
+app-dev-teardown:
+	snow app teardown
+
 ############
 # Teardown #
 ############
