@@ -9,7 +9,7 @@ version:
 configuration:
   log_level: INFO
   trace_level: ALWAYS
-  # grant_callback: setup.create_service
+  grant_callback: setup.create_services
 
 artifacts:
   readme: README.md
