@@ -3,7 +3,7 @@ import streamlit as st
 from snowflake.snowpark import Session
 import snowflake.permissions as permissions
 
-st.title('Hello Snowflake!')
+st.title('App Scaffold')
 
 # Get the current credentials
 session = Session.builder.getOrCreate()
@@ -11,7 +11,7 @@ current_org = session.sql("SELECT CURRENT_ORGANIZATION_NAME() AS result").collec
 current_acct = session.sql("SELECT CURRENT_ACCOUNT_NAME() AS result").collect()[0].RESULT
 current_db = session.sql("SELECT CURRENT_DATABASE() AS result").collect()[0].RESULT
 
-# Privileges Check
+# Privileges
 st.header("Privileges Check")
 app_url_base = f"https://app.snowflake.com/{current_org}/{current_acct}/#/apps/application/{current_db}"
 privileges_url = app_url_base + "/security/privileges"
