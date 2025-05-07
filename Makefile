@@ -135,3 +135,6 @@ teardown-services: teardown-frontend teardown-backend
 teardown-compute:
 	snow sql -q "DROP COMPUTE POOL IF EXISTS ${compute_pool_name}"
 	snow sql -q "DROP WAREHOUSE IF EXISTS ${warehouse_name}"
+
+teardown-app:
+	snow app teardown

@@ -88,3 +88,15 @@ If you make changes to an image or your images, you can build (`make build-all`)
 To drop the frontend and backend services, run the `make teardown-services` command in your terminal.
 
 To drop the compute resources previously created, run the `make teardown-compute` command in your terminal.
+
+# App Development
+
+## Run/Upgrade App
+**`make app-dev-run`**
+
+To create the application for development purposes, you can run `make app-dev-run`. After the application is running, the same command can be used to futher iterate on the application. For example, if you launch the app and change the Streamlit, you can just run `make app-dev-run` again and see your changes reflected in the existing application.
+
+## Teardown App
+**`make app-dev-teardown`**
+
+To teardown the app, you can run `make app-dev-teardown`. For consistency's sake, `make teardown-app` is also an available command for tearing down the application.
