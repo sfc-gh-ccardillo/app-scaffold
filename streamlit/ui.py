@@ -26,5 +26,5 @@ if all(privileges_check.values()):
 else:
     
     st.text("Some privileges required to run this app have not been granted.")
-    st.html(f'Please use the <a href="{privileges_url}">privileges panel</a> to grant the following privileges:')
+    st.html(f'Please use the <a href="{privileges_url}" target="_blank" >privileges panel</a> to grant the following privileges:')
     [privilege for privilege, granted in privileges_check.items() if not granted]
