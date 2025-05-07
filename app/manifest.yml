@@ -12,7 +12,7 @@ configuration:
   # grant_callback: setup.create_service
 
 artifacts:
-  # readme: README.md
+  readme: README.md
   setup_script: setup.sql
   default_streamlit: core.ui
 
