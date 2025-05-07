@@ -14,15 +14,16 @@ configuration:
 artifacts:
   readme: README.md
   setup_script: setup.sql
-  default_streamlit: core.ui
+  # default_streamlit: core.ui
+  default_web_endpoint:
+    service: services.frontend
+    endpoint: nginx
 
-  # default_web_endpoint:
-  #   service: services.spcs_na_service
-  #   endpoint: my-endpoint
-
-  # container_services:
-  #   images:
-  #     - /spcs_na_db/public/images/spcs_na_service:latest
+  container_services:
+    images:
+      - /dev/devops/img/nginx:latest
+      - /dev/devops/img/frontend:latest
+      - /dev/devops/img/backend:latest
 
 privileges:
   - CREATE COMPUTE POOL:

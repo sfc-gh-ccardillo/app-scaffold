@@ -7,6 +7,8 @@ entities:
     artifacts:
       - src: app/*
         dest: ./
+      - src: svc/*
+        dest: svc/
       - src: streamlit/*
         dest: streamlit/
   app:
